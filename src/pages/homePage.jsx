@@ -11,10 +11,10 @@ export default props => (
         <span className="span2">Oi eu sou Guilherme Calheira.<br/>Um desenvolvedor FullStack React/Node apaixonado por programação </span>
        
       <a href="https://github.com/guicalheira">
-        <img className='icons'  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" />
+        <img className='icons-a'  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" />
       </a>
       <a href="https://www.linkedin.com/in/guilherme-calheira-de-almeida-9bb9bb254/">
-        <img className='icons'  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-plain.svg" /> 
+        <img className='icons-a'  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-plain.svg" /> 
       </a>
         <footer>
      <span>Tecnologias |
