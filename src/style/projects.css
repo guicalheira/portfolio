@@ -1,0 +1,101 @@
+/* Estilo base dos botões */
+.flex-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pins {
+  width: 150px;
+  height: 150px;
+  margin: 20px;
+  border-radius: 50%;
+  border: transparent; /* Largura da borda inicialmente transparente */
+  background: linear-gradient(135deg, #0073e6, #00aaff, #0073e6, #0055ff);
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.pins a {
+  text-decoration: none;
+  color: white;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s;
+}
+
+.button-label {
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+  display: block;
+  margin-top: 15px;
+}
+
+/* Efeito de hover */
+.pins::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: transparent; /* Largura da borda inicialmente transparente */
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  pointer-events: none; /* Evita que o elemento ::before seja clicável */
+  border-color: white; /* Cor da borda */
+  animation-delay: 0.3s; /* Inicia a animação de traçado após a animação de rotação */
+}
+
+/* Adicione este trecho para fazer o ícone crescer no hover */
+.pins:hover .icon {
+  transform: translate(-50%, -50%) scale(1.2); /* Aumenta o tamanho do ícone em 20% */
+}
+
+/* Adicione um novo seletor para o efeito de contorno durante o hover */
+.pins::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  pointer-events: none;
+  border-color: transparent transparent transparent white;
+  transform-origin: center;
+  transform: rotate(d0eg);
+  animation: rotateBorder 1s linear infinite;
+  opacity: 0;
+}
+
+/* Modifique o efeito de rotação da borda durante o hover */
+.pins:hover::after {
+  animation: rotateBorder 1.5s linear  infinite ;
+  opacity: 1;
+}
+
+
+
+
+/* Efeito de rotação da borda */
+@keyframes rotateBorder {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

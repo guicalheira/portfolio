@@ -1,0 +1,55 @@
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.desktop {
+  width: 800px;
+  height: 800px;
+  background-image: url("../img/desktop.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  top: -150px;
+  transform-origin: top center;
+  transform: scale(1); /* Defina a escala inicial */
+}
+
+.cellphone {
+  width: 450px;
+  height: 450px;
+  background-image: url("../img/cellphone.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  transform-origin: top center;
+  transform: scale(1); /* Defina a escala inicial */
+}
+
+.img-mobile {
+  width: 185px;
+  height: 373px;
+  position: relative;
+  top: 35px;
+  left: 133px;
+  border-radius: 20px;
+  transform-origin: top left;
+  transform: scale(1); /* Defina a escala inicial */
+}
+
+.img-desktop {
+  width: 510px;
+  height: 310px;
+  position: absolute;
+  top: 225px;
+  left: 145px;
+  border-radius: 10px;
+  transform-origin: top left;
+  transform: scale(1); /* Defina a escala inicial */
+}
+
+/* Adicione media queries se desejar ajustes específicos em tamanhos de tela diferentes */
