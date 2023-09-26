@@ -1,6 +1,7 @@
 .menu{
   display: flex;
   justify-content: space-between;
+  flex-wrap: nowrap;
 
 }
 
@@ -15,8 +16,9 @@
  text-decoration: none;
 }
 .menu button a {
-  text-decoration: none;
-  color: #FFFF;
+  margin: 10px;
+text-decoration: none;
+color: #FFFF;
  font-weight: bold;
  font-size: large;
 }

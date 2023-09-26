@@ -2,7 +2,7 @@ import React from "react";
 import '../style/homePage.css';
 
 export default props => (
-  <div className="flex-container">
+  <div className="container">
        
         <div>
          
@@ -16,7 +16,7 @@ export default props => (
       <a href="https://www.linkedin.com/in/guilherme-calheira-de-almeida-9bb9bb254/">
         <img className='icons-a'  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-plain.svg" /> 
       </a>
-        <footer>
+        <footer className="footer">
      <span>Tecnologias |
      <img className='icons'  align='center' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
      <img className='icons'  align= 'center' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" />

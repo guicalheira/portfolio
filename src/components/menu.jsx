@@ -6,6 +6,8 @@ import "./menu.css";
 export default function Menu() {
   
   return (
+  
+
     <div className="menu" >
      <div className="left-content">
      <span>
@@ -19,8 +21,7 @@ export default function Menu() {
     <button><a href="/projects">Projetos</a></button>
     <button><a href="/contact">Contato</a></button>
    </div>
-   
-    
     </div>
+    
   );
 }

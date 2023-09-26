@@ -1,9 +1,11 @@
-/* Estilo base dos botões */
-.flex-container {
-  display: flex;
-  justify-content: center;
+.container{
+  display: flex; 
+  flex-direction: row; 
+  justify-content: center; 
+  align-items: center;  
   flex-wrap: wrap;
 }
+
 
 .pins {
   width: 150px;

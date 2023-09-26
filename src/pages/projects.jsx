@@ -9,7 +9,7 @@ import {
 import "../style/projects.css";
 
 export default (props) => (
-  <div className="flex-container">
+  <div className="container">
     <div className="button-container">
       <button className="pins">
         <a href="/projects/calculadora">
