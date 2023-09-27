@@ -28,7 +28,7 @@
   background-repeat: no-repeat;
   position: relative;
   transform-origin: top center;
-  transform: scale(1); /* Defina a escala inicial */
+  transform: scale(1); 
 }
 
 .img-mobile {
@@ -39,7 +39,7 @@
   left: 133px;
   border-radius: 20px;
   transform-origin: top left;
-  transform: scale(1); /* Defina a escala inicial */
+  transform: scale(1); 
 }
 
 .img-desktop {
@@ -50,7 +50,7 @@
   left: 145px;
   border-radius: 10px;
   transform-origin: top left;
-  transform: scale(1); /* Defina a escala inicial */
+  transform: scale(1); 
 }
 
-/* Adicione media queries se desejar ajustes específicos em tamanhos de tela diferentes */
+

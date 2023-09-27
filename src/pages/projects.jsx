@@ -9,7 +9,7 @@ import {
 import "../style/projects.css";
 
 export default (props) => (
-  <div className="container">
+  <div className="projects-container">
     <div className="button-container">
       <button className="pins">
         <a href="/projects/calculadora">

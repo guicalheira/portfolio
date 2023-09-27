@@ -2,7 +2,7 @@ import React from "react";
 import '../style/homePage.css';
 
 export default props => (
-  <div className="container">
+  <div className="home-container">
        
         <div>
          
