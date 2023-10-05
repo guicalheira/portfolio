@@ -6,7 +6,7 @@ import MyMoneyDesktop from "../img/MyMoney.png"
 
 export default props => (
   <div className="flex-container">
-    <div className="test">
+    <div className="img-container">
     <div className="desktop">
       <img src={MyMoneyDesktop} alt="" className="img-desktop" />
     </div>
