@@ -11,7 +11,7 @@ export default function Menu() {
     <div className="menu" >
      <div className="left-content">
      <span>
-      Gui_CalheiraDev
+      GuiCalheira_dev
      </span>
      </div>
      

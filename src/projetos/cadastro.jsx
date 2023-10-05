@@ -7,5 +7,6 @@ export default (props) => (
     <div className="desktop">
       <img className="img-desktop" src={Cadastro} alt="" />
     </div>
+    <p>MUITOTEXTOMUITOTEXTOMUITOTEXTOMUITOTEXTOMUITOTEXTOMUITOTEXTOMUITOTEXTOMUITOTEXTOMUITOTEXTOMUITOTEXTOMUITOTEXTOMUITOTEXTO</p>
   </div>
 );

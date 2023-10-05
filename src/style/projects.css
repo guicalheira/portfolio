@@ -12,7 +12,7 @@
   height: 150px;
   margin: 20px;
   border-radius: 50%;
-  border: transparent; /* Largura da borda inicialmente transparente */
+  border: transparent; 
   background: linear-gradient(135deg, #0073e6, #00aaff, #0073e6, #0055ff);
   position: relative;
   cursor: pointer;
@@ -43,28 +43,27 @@
   margin-top: 15px;
 }
 
-/* Efeito de hover */
+
 .pins::before {
   content: '';
   position: absolute;
   width: 100%;
   height: 100%;
-  border: transparent; /* Largura da borda inicialmente transparente */
+  border: transparent; 
   border-radius: 50%;
   top: 0;
   left: 0;
   box-sizing: border-box;
-  pointer-events: none; /* Evita que o elemento ::before seja clicável */
-  border-color: white; /* Cor da borda */
-  animation-delay: 0.3s; /* Inicia a animação de traçado após a animação de rotação */
+  pointer-events: none; 
+  border-color: white; 
+  animation-delay: 0.3s; 
 }
 
-/* Adicione este trecho para fazer o ícone crescer no hover */
 .pins:hover .icon {
-  transform: translate(-50%, -50%) scale(1.2); /* Aumenta o tamanho do ícone em 20% */
+  transform: translate(-50%, -50%) scale(1.2); 
 }
 
-/* Adicione um novo seletor para o efeito de contorno durante o hover */
+
 .pins::after {
   content: '';
   position: absolute;
@@ -83,7 +82,6 @@
   opacity: 0;
 }
 
-/* Modifique o efeito de rotação da borda durante o hover */
 .pins:hover::after {
   animation: rotateBorder 1.5s linear  infinite ;
   opacity: 1;
@@ -92,7 +90,6 @@
 
 
 
-/* Efeito de rotação da borda */
 @keyframes rotateBorder {
   0% {
     transform: rotate(0deg);
