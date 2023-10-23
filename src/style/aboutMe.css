@@ -1,0 +1,40 @@
+.aboutMe-flex {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%); /* Isso centraliza o conteúdo na horizontal */
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+  
+  .experiencia-text {
+    font-size: 18px;
+    line-height: 1.5;
+    max-width: 700px; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+ 
+  }
+  .curriculo{
+    color: white;
+
+    text-shadow: none;
+    margin-top: 30px;
+    min-width: 700px;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+  .curriculo:hover{
+    color: #00aaff;
+  }
+
+  

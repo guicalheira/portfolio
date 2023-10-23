@@ -10,6 +10,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+ 
 }
 
 .desktop {
@@ -59,8 +60,22 @@
   transform-origin: top left;
   transform: scale(1); 
 }
-p{
-  position: relative;
- 
+.project-text {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
+  font-size: 20px; 
+  line-height: 1.5; 
+  padding: 10px; 
+
 }
+.project-text a {
+ 
+    color: white;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+  
+  .project-text a:hover {
+    color: #00aaff;
+  }
+
 
