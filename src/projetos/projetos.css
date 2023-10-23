@@ -65,7 +65,8 @@
   font-size: 20px; 
   line-height: 1.5; 
   padding: 10px; 
-
+  max-width: 1200px;
+  margin-top: -250px;
 }
 .project-text a {
  
