@@ -33,7 +33,11 @@
   footer{
     margin-top: 50px;
   }
- 
+ @media(max-width:550px){
+  .home-container{
+    margin-left: 50px;
+  }
+ }
   
  
   
