@@ -14,11 +14,11 @@ export default (props) => (
       </div>
     </div>
 
-    <p className="project-text">
+    <span className="project-text">
       Este app é um gerenciador de tarefas, criado para auxiliar o usuário a
       organizar suas tarefas de dia a dia,o usuário consegue adicionar suas tarefas,marcar como concluídas ou não, editá-las e/ou excluí-las, também possui uma barra de pesquisas que auxilia o usuário a encontrar a tarefa desejada. <br /> Nele usei integração com o MongoDB (ultilizado para banco de dados),
       Redux(ultilizado para gerenciamento de estado), React, HTML, CSS(ultilizado para estilização) entre outros frameworks. 
       <br/> <strong>Código do projeto no Github:</strong> <a href="https://github.com/guicalheira/Projeto-Cadastro">https://github.com/guicalheira/Projeto-Cadastro</a>
-    </p>
+    </span>
   </div>
 );

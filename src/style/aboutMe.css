@@ -1,4 +1,4 @@
-.aboutMe-flex {
+.aboutMe-container {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -6,7 +6,7 @@
     position: absolute;
     top: 150px;
     left: 50%;
-    transform: translateX(-50%); /* Isso centraliza o conteúdo na horizontal */
+    transform: translateX(-50%); 
   }
   
   h2 {
@@ -24,12 +24,11 @@
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
  
   }
-  .curriculo{
-    color: white;
 
-    text-shadow: none;
+  .curriculo{
     margin-top: 30px;
-    min-width: 700px;
+    color: white;
+    text-shadow: none;
     text-decoration: underline;
     transition: color 0.3s ease;
   }
