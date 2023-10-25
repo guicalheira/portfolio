@@ -1,7 +1,7 @@
 .aboutMe-container {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     position: absolute;
     top: 150px;
@@ -20,7 +20,7 @@
   .experiencia-text {
     font-size: 18px;
     line-height: 1.5;
-    max-width: 700px; 
+    width: 700px; 
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
  
   }
@@ -35,5 +35,62 @@
   .curriculo:hover{
     color: #00aaff;
   }
+  @media(max-width:750px){
+
+    .experiencia-text{
+   transform:  scale(90%);
+    }
+    h2{
+      transform:  scale(90%);
+    }
+    .curriculo{
+      transform:  scale(90%);
+    }
+  }
+  @media(max-width:650px){
+    .aboutMe-container{
+      margin-left: 40px;
+    }
+    .experiencia-text{
+   transform:  scale(85%);
+    }
+    h2{
+      transform:  scale(85%);
+    }
+    .curriculo{
+      transform:  scale(85%);
+    }
+  }
+  @media(max-width:525px){
+    .aboutMe-container{
+      margin-left: 80px;
+    }
+    .experiencia-text{
+   transform:  scale(75%);
+    }
+    h2{
+      transform:  scale(75%);
+    }
+    .curriculo{
+      transform:  scale(75%);
+    }
+  }
+  @media(max-width:400px){
+    .aboutMe-container{
+      margin-left: 100px;
+     
+    }
+    .experiencia-text{
+      margin-top: -50px;
+   transform:  scale(65%);
+    }
+    h2{
+      transform:  scale(65%);
+    }
+    .curriculo{
+      transform:  scale(65%);
+    }
+  }
+
 
   
