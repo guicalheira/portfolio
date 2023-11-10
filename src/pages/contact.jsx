@@ -4,7 +4,7 @@ import "../style/contact.css";
 export default (props) => (
   <div className="contact-container">
     <div className="contato">
-      <h1 className="contato-title">Contato</h1>
+      <h1 className="contato-title">Contatos</h1>
       <hr />
     </div>
 
