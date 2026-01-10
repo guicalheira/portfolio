@@ -1,0 +1,2 @@
+export { SmoothScroll } from './SmoothScroll'
+
