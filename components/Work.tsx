@@ -45,7 +45,7 @@ function Featured() {
         >
           <Image
             src={psi.image}
-            alt="Página inicial do PsiMais com a tela do aplicativo: agenda do dia e prontuário de paciente"
+            alt={t.work.psiAlt}
             width={1600}
             height={911}
             sizes="(min-width: 1024px) 66vw, 100vw"

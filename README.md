@@ -21,7 +21,7 @@ Linguagem editorial em vez de “landing page de template”:
 4. **Stack** — tecnologias organizadas pelas camadas de um produto (front-end → back-end → dados), mais linguagens e fluxo de trabalho.
 5. **Contato** — e-mail com botão de copiar, GitHub, LinkedIn e currículo.
 
-Disponível em português, inglês e espanhol (a escolha fica salva no navegador).
+Disponível em inglês (padrão), português e espanhol. O HTML gerado e os metadados (SEO, prévias de link) ficam em inglês; na primeira visita, navegadores em português ou espanhol recebem o próprio idioma automaticamente. A escolha manual no seletor PT/EN/ES fica salva e tem prioridade.
 
 ## Estrutura
 

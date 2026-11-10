@@ -5,7 +5,9 @@
 
 export const locales = ['pt', 'en', 'es'] as const
 export type Locale = (typeof locales)[number]
-export const defaultLocale: Locale = 'pt'
+// Inglês é o padrão: é o que o Google e as prévias de link enxergam.
+// Visitantes com navegador em português ou espanhol são detectados no cliente.
+export const defaultLocale: Locale = 'en'
 
 export const localeNames: Record<Locale, string> = {
   pt: 'Português',
@@ -27,6 +29,7 @@ export const translations = {
       toDark: 'Ativar tema escuro',
       toLight: 'Ativar tema claro',
       home: 'Guilherme Calheira — início',
+      mainNav: 'Navegação principal',
     },
     hero: {
       role: 'Desenvolvedor Full Stack',
@@ -37,6 +40,8 @@ export const translations = {
       statementB: '— da interface ao banco de dados.',
       ctaWork: 'Ver trabalhos',
       ctaCv: 'Currículo PDF',
+      roleLabel: 'Função',
+      locationLabel: 'Localização',
       featuredLabel: 'Em produção',
       featuredText: 'PsiMais — SaaS de gestão clínica para psicólogos',
     },
@@ -53,6 +58,7 @@ export const translations = {
       code: 'Código',
       github: 'Todos os repositórios no GitHub',
       preview: 'Prévia do projeto',
+      psiAlt: 'Página inicial do PsiMais com telas do aplicativo: pacientes do dia e histórico de sessões de uma paciente',
     },
     about: {
       title: 'Sobre',
@@ -113,6 +119,7 @@ export const translations = {
       toDark: 'Switch to dark theme',
       toLight: 'Switch to light theme',
       home: 'Guilherme Calheira — home',
+      mainNav: 'Main navigation',
     },
     hero: {
       role: 'Full Stack Developer',
@@ -123,6 +130,8 @@ export const translations = {
       statementB: 'web products — from the interface to the database.',
       ctaWork: 'See work',
       ctaCv: 'Résumé PDF',
+      roleLabel: 'Role',
+      locationLabel: 'Location',
       featuredLabel: 'Live',
       featuredText: 'PsiMais — practice management SaaS for psychologists',
     },
@@ -139,6 +148,7 @@ export const translations = {
       code: 'Code',
       github: 'All repositories on GitHub',
       preview: 'Project preview',
+      psiAlt: 'PsiMais home page showing app screens: today’s patients and a patient’s session history',
     },
     about: {
       title: 'About',
@@ -199,6 +209,7 @@ export const translations = {
       toDark: 'Activar tema oscuro',
       toLight: 'Activar tema claro',
       home: 'Guilherme Calheira — inicio',
+      mainNav: 'Navegación principal',
     },
     hero: {
       role: 'Desarrollador Full Stack',
@@ -209,6 +220,8 @@ export const translations = {
       statementB: '— de la interfaz a la base de datos.',
       ctaWork: 'Ver trabajos',
       ctaCv: 'Currículum PDF',
+      roleLabel: 'Función',
+      locationLabel: 'Ubicación',
       featuredLabel: 'En producción',
       featuredText: 'PsiMais — SaaS de gestión clínica para psicólogos',
     },
@@ -225,6 +238,7 @@ export const translations = {
       code: 'Código',
       github: 'Todos los repositorios en GitHub',
       preview: 'Vista previa del proyecto',
+      psiAlt: 'Página de inicio de PsiMais con pantallas de la app: pacientes del día e historial de sesiones de una paciente',
     },
     about: {
       title: 'Sobre mí',

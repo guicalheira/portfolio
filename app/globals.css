@@ -29,6 +29,11 @@
     color-scheme: dark;
   }
 
+  /* Enquanto o idioma detectado (pt/es) é aplicado, a página fica oculta por alguns milissegundos */
+  html.i18n-pending body {
+    visibility: hidden;
+  }
+
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

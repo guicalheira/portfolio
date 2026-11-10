@@ -48,11 +48,11 @@ export function Hero() {
         transition={{ duration: 0.8, delay: 0.1 }}
       >
         <div className="md:col-span-3">
-          <dt className="sr-only">Função</dt>
+          <dt className="sr-only">{t.hero.roleLabel}</dt>
           <dd className="text-ink">{t.hero.role}</dd>
         </div>
         <div className="text-right md:col-span-3 md:text-left">
-          <dt className="sr-only">Local</dt>
+          <dt className="sr-only">{t.hero.locationLabel}</dt>
           <dd>{t.hero.location}</dd>
         </div>
         <div className="col-span-2 flex gap-2 md:col-span-6 md:justify-end">

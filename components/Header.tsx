@@ -83,7 +83,7 @@ export function Header() {
             Guilherme Calheira
           </a>
 
-          <nav aria-label="Principal" className="hidden md:block">
+          <nav aria-label={t.nav.mainNav} className="hidden md:block">
             <ol className="flex items-center gap-8">
               {sections.map((id, i) => (
                 <li key={id}>
@@ -132,7 +132,7 @@ export function Header() {
             exit={{ clipPath: 'inset(0 0 100% 0)' }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            <nav aria-label="Principal" className="page-x flex-1 border-t border-line pt-8">
+            <nav aria-label={t.nav.mainNav} className="page-x flex-1 border-t border-line pt-8">
               <ol className="space-y-2">
                 {sections.map((id, i) => (
                   <motion.li

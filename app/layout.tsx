@@ -40,27 +40,29 @@ const mono = localFont({
   fallback: ['ui-monospace', 'monospace'],
 })
 
+// Metadados em inglês: é o que buscadores e prévias de link (Fiverr, LinkedIn, WhatsApp) mostram
+const title = 'Guilherme Calheira — Full Stack Developer'
 const description =
-  'Desenvolvedor Full Stack. Construo produtos web completos, da interface ao banco de dados — como o PsiMais, um SaaS para psicólogos em produção.'
+  'Full stack developer building complete web products, from the interface to the database — like PsiMais, a live SaaS for psychologists. React, Next.js, Vue.js, Node.js.'
 
 export const metadata: Metadata = {
-  title: 'Guilherme Calheira — Desenvolvedor Full Stack',
+  title,
   description,
-  keywords: ['Guilherme Calheira', 'desenvolvedor full stack', 'React', 'Next.js', 'Vue.js', 'Node.js', 'PsiMais', 'portfólio'],
+  keywords: ['Guilherme Calheira', 'full stack developer', 'freelance web developer', 'React', 'Next.js', 'Vue.js', 'Node.js', 'PsiMais', 'portfolio'],
   authors: [{ name: 'Guilherme Calheira' }],
   creator: 'Guilherme Calheira',
   icons: { icon: '/favicon.svg' },
   openGraph: {
     type: 'website',
-    locale: 'pt_BR',
-    alternateLocale: ['en_US', 'es_ES'],
-    title: 'Guilherme Calheira — Desenvolvedor Full Stack',
+    locale: 'en_US',
+    alternateLocale: ['pt_BR', 'es_ES'],
+    title,
     description,
     siteName: 'Guilherme Calheira',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Guilherme Calheira — Desenvolvedor Full Stack',
+    title,
     description,
   },
   robots: { index: true, follow: true },
@@ -75,12 +77,16 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
-// Aplica o tema e o idioma salvos antes da primeira pintura (evita flash)
-const bootScript = `(function(){try{var d=document.documentElement;var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.classList.add(t);var l=localStorage.getItem('preferred-locale');if(l==='en')d.lang='en';else if(l==='es')d.lang='es'}catch(e){}})()`
+// Roda antes da primeira pintura:
+// 1. aplica o tema salvo (ou o do sistema);
+// 2. escolhe o idioma: o salvo pelo visitante > o do navegador (pt/es) > inglês.
+//    Se não for inglês, esconde a página até o React trocar os textos (evita piscar em inglês).
+//    O timeout garante que a página reapareça mesmo se o JavaScript falhar.
+const bootScript = `(function(){var d=document.documentElement;try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.classList.add(t)}catch(e){}var l=null;try{l=localStorage.getItem('preferred-locale')}catch(e){}if(l!=='pt'&&l!=='en'&&l!=='es'){l='en';var n=navigator.languages||[navigator.language||''];for(var i=0;i<n.length;i++){var c=String(n[i]).slice(0,2).toLowerCase();if(c==='pt'||c==='es'||c==='en'){l=c;break}}}d.setAttribute('data-locale',l);if(l!=='en'){d.lang=l==='pt'?'pt-BR':'es';d.classList.add('i18n-pending');setTimeout(function(){d.classList.remove('i18n-pending')},1500)}})()`
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${serif.variable} ${sans.variable} ${mono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${serif.variable} ${sans.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
       </head>
