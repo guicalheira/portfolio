@@ -1,35 +1,43 @@
 import type { Metadata, Viewport } from 'next'
-import { Instrument_Serif, Inter_Tight, JetBrains_Mono } from 'next/font/google'
+import localFont from 'next/font/local'
 import { Providers } from './providers'
 import './globals.css'
 
 // ============================================
-// Tipografia
+// Tipografia (arquivos hospedados no próprio projeto, subconjunto latino)
 // Instrument Serif: títulos, com itálico para ênfase
 // Inter Tight: texto corrido e interface
 // JetBrains Mono: metadados, rótulos e índices
+//
+// Usamos next/font/local em vez de next/font/google para que o build
+// não dependa do Google Fonts (que às vezes quebra o build na Vercel).
+// Todas as fontes são licenciadas sob a SIL Open Font License.
 // ============================================
 
-const serif = Instrument_Serif({
-  subsets: ['latin'],
-  weight: '400',
-  style: ['normal', 'italic'],
+const serif = localFont({
+  src: [
+    { path: './fonts/InstrumentSerif-Regular.woff2', weight: '400', style: 'normal' },
+    { path: './fonts/InstrumentSerif-Italic.woff2', weight: '400', style: 'italic' },
+  ],
   variable: '--font-serif',
   display: 'swap',
+  fallback: ['Georgia', 'serif'],
 })
 
-const sans = Inter_Tight({
-  subsets: ['latin'],
-  weight: ['400', '500'],
+const sans = localFont({
+  src: './fonts/InterTight-Variable.woff2',
+  weight: '100 900',
   variable: '--font-sans',
   display: 'swap',
+  fallback: ['system-ui', 'sans-serif'],
 })
 
-const mono = JetBrains_Mono({
-  subsets: ['latin'],
-  weight: ['400'],
+const mono = localFont({
+  src: './fonts/JetBrainsMono-Regular.woff2',
+  weight: '400',
   variable: '--font-mono',
   display: 'swap',
+  fallback: ['ui-monospace', 'monospace'],
 })
 
 const description =
