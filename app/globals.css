@@ -3,281 +3,115 @@
 @tailwind utilities;
 
 /* ============================================
-   Variáveis de Tema (Light/Dark)
+   Tokens de cor
+   Papel quente + tinta + um único acento (vermelhão).
+   O acento é usado com parcimônia: estados, marcadores e destaques.
    ============================================ */
 
 @layer base {
   :root {
-    /* Scroll suave */
-    scroll-behavior: smooth;
-    
-    /* Transição suave para mudança de tema */
-    color-scheme: light dark;
+    --paper: 241 238 231;   /* #F1EEE7 */
+    --paper-2: 233 229 219; /* #E9E5DB */
+    --ink: 22 21 19;        /* #161513 */
+    --muted: 94 90 82;      /* #5E5A52 — 5.9:1 sobre o papel */
+    --line: 214 209 197;    /* #D6D1C5 */
+    --signal: 179 58 11;    /* #B33A0B — 4.9:1 sobre o papel */
+    color-scheme: light;
   }
 
-  /* ========== TEMA ESCURO (Padrão) ========== */
   .dark {
-    --color-background: 10 10 11;
-    --color-background-secondary: 17 17 19;
-    --color-background-tertiary: 26 26 29;
-    
-    --color-foreground: 250 250 250;
-    --color-foreground-muted: 161 161 170;
-    --color-foreground-subtle: 82 82 91;
-    
-    --color-accent: 212 168 83;
-    --color-accent-hover: 228 184 99;
-    --color-accent-muted: 139 115 85;
-    
-    --color-border: 39 39 42;
-    --color-border-hover: 63 63 70;
-  }
-
-  /* ========== TEMA CLARO ========== */
-  .light {
-    --color-background: 250 250 250;
-    --color-background-secondary: 244 244 245;
-    --color-background-tertiary: 228 228 231;
-    
-    --color-foreground: 24 24 27;
-    --color-foreground-muted: 82 82 91;
-    --color-foreground-subtle: 161 161 170;
-    
-    --color-accent: 180 130 50;
-    --color-accent-hover: 160 110 40;
-    --color-accent-muted: 139 115 85;
-    
-    --color-border: 228 228 231;
-    --color-border-hover: 212 212 216;
+    --paper: 19 18 16;      /* #131210 */
+    --paper-2: 27 26 23;    /* #1B1A17 */
+    --ink: 236 232 223;     /* #ECE8DF */
+    --muted: 155 150 139;   /* #9B968B */
+    --line: 44 42 38;       /* #2C2A26 */
+    --signal: 240 112 58;   /* #F0703A */
+    color-scheme: dark;
   }
 
   html {
-    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 
   body {
-    background-color: rgb(var(--color-background));
-    color: rgb(var(--color-foreground));
-    overflow-x: hidden;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    @apply bg-paper font-sans text-ink;
+    font-feature-settings: 'ss01', 'cv11';
   }
 
-  /* Scrollbar elegante */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: rgb(var(--color-background-secondary));
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: rgb(var(--color-border-hover));
-    border-radius: 9999px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgb(var(--color-foreground-subtle));
-  }
-
-  /* Selection */
   ::selection {
-    background: rgba(212, 168, 83, 0.3);
-    color: rgb(var(--color-foreground));
+    background: rgb(var(--signal));
+    color: rgb(var(--paper));
   }
 
-  .light ::selection {
-    background: rgba(180, 130, 50, 0.3);
-  }
-
-  /* Focus outline acessível */
   :focus-visible {
-    outline: 2px solid rgb(var(--color-accent));
-    outline-offset: 2px;
+    outline: 2px solid rgb(var(--signal));
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 }
-
-/* ============================================
-   Componentes Reutilizáveis
-   ============================================ */
 
 @layer components {
-  /* Container responsivo */
-  .container-custom {
-    @apply w-full max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16;
+  /* Bloco em cores invertidas: usa o acento do tema oposto para manter o contraste */
+  .invert-signal {
+    --signal: 240 112 58;
+  }
+  .dark .invert-signal {
+    --signal: 179 58 11;
   }
 
-  /* Texto com gradiente */
-  .text-gradient {
-    background: linear-gradient(to right, rgb(var(--color-accent)), rgb(var(--color-accent-hover)), rgb(var(--color-accent)));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    background-size: 200% auto;
+  .page-x {
+    @apply mx-auto w-full max-w-page px-4 sm:px-8 lg:px-12;
   }
 
-  /* Linha decorativa animada */
-  .line-accent {
-    height: 2px;
-    background: linear-gradient(to right, rgb(var(--color-accent)), transparent);
+  /* Rótulo editorial em mono, usado para metadados */
+  .label {
+    @apply font-mono text-mono-xs uppercase text-muted;
   }
 
-  /* Card com efeito glass */
-  .glass-card {
-    background: rgba(var(--color-background-secondary), 0.5);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgb(var(--color-border));
-    border-radius: 1rem;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+  /* Link com sublinhado que cresce da esquerda */
+  .link-draw {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition: background-size 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .link-draw:hover,
+  .link-draw:focus-visible {
+    background-size: 100% 1px;
   }
 
-  /* Botão primário */
-  .btn-primary {
-    @apply relative inline-flex items-center justify-center gap-2 px-6 py-3;
-    @apply font-medium rounded-full;
-    @apply transition-all duration-300 ease-out;
-    background-color: rgb(var(--color-accent));
-    color: rgb(var(--color-background));
+  /* Botões */
+  .btn {
+    @apply inline-flex items-center gap-3 border px-5 py-3.5 font-mono text-mono-sm uppercase;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   }
-
-  .btn-primary:hover {
-    background-color: rgb(var(--color-accent-hover));
-    box-shadow: 0 0 30px rgba(212, 168, 83, 0.3);
+  .btn-solid {
+    @apply btn border-ink bg-ink text-paper hover:border-signal hover:bg-signal;
   }
-
-  .btn-primary:focus-visible {
-    ring: 2px;
-    ring-color: rgb(var(--color-accent));
-    ring-offset: 2px;
+  .btn-ghost {
+    @apply btn border-line text-ink hover:border-ink;
   }
-
-  /* Botão secundário */
-  .btn-secondary {
-    @apply relative inline-flex items-center justify-center gap-2 px-6 py-3;
-    @apply font-medium rounded-full;
-    @apply transition-all duration-300 ease-out;
-    background-color: transparent;
-    color: rgb(var(--color-foreground));
-    border: 1px solid rgb(var(--color-border));
+  .btn .arrow {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
-
-  .btn-secondary:hover {
-    border-color: rgb(var(--color-foreground-subtle));
-    background-color: rgba(var(--color-foreground), 0.05);
+  .btn:hover .arrow {
+    transform: translateX(4px);
   }
-
-  /* Link com underline animado */
-  .link-underline {
-    @apply relative;
+  .btn:hover .arrow-down {
+    transform: translateY(3px);
   }
-
-  .link-underline::after {
-    content: '';
-    @apply absolute bottom-0 left-0 w-0 h-[1px];
-    background-color: rgb(var(--color-accent));
-    @apply transition-all duration-300 ease-out;
-  }
-
-  .link-underline:hover::after {
-    @apply w-full;
-  }
-
-  /* Título de seção */
-  .section-title {
-    @apply font-display text-display-lg;
-    color: rgb(var(--color-foreground));
-  }
-
-  /* Subtítulo de seção */
-  .section-subtitle {
-    @apply text-body-lg max-w-2xl;
-    color: rgb(var(--color-foreground-muted));
-  }
-}
-
-/* ============================================
-   Utilitários Customizados
-   ============================================ */
-
-@layer utilities {
-  /* Delay de animação dinâmico */
-  .animation-delay-100 { animation-delay: 100ms; }
-  .animation-delay-200 { animation-delay: 200ms; }
-  .animation-delay-300 { animation-delay: 300ms; }
-  .animation-delay-400 { animation-delay: 400ms; }
-  .animation-delay-500 { animation-delay: 500ms; }
-  .animation-delay-600 { animation-delay: 600ms; }
-
-  /* Máscara de gradiente para fade */
-  .mask-gradient-b {
-    mask-image: linear-gradient(to bottom, black 60%, transparent);
-    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent);
-  }
-
-  .mask-gradient-t {
-    mask-image: linear-gradient(to top, black 60%, transparent);
-    -webkit-mask-image: linear-gradient(to top, black 60%, transparent);
-  }
-
-  /* Efeito de brilho no hover */
-  .glow-effect {
-    @apply relative overflow-hidden;
-  }
-
-  .glow-effect::before {
-    content: '';
-    @apply absolute inset-0 opacity-0 transition-opacity duration-500;
-    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-      rgba(212, 168, 83, 0.15) 0%, 
-      transparent 50%);
-  }
-
-  .glow-effect:hover::before {
-    @apply opacity-100;
-  }
-}
-
-/* ============================================
-   Animações de Entrada (Page Load)
-   ============================================ */
-
-.page-enter {
-  animation: pageEnter 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes pageEnter {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Stagger para elementos filhos */
-.stagger-children > * {
-  opacity: 0;
-  animation: staggerIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
-.stagger-children > *:nth-child(2) { animation-delay: 100ms; }
-.stagger-children > *:nth-child(3) { animation-delay: 200ms; }
-.stagger-children > *:nth-child(4) { animation-delay: 300ms; }
-.stagger-children > *:nth-child(5) { animation-delay: 400ms; }
-.stagger-children > *:nth-child(6) { animation-delay: 500ms; }
-
-@keyframes staggerIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .btn:hover .arrow-up-right {
+    transform: translate(3px, -3px);
   }
 }

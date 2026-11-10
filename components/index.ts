@@ -1,13 +1,6 @@
-// ============================================
-// Barrel export de todos os componentes
-// ============================================
-
-export { Navigation } from './Navigation'
+export { Header } from './Header'
 export { Hero } from './Hero'
+export { Work } from './Work'
 export { About } from './About'
-export { Projects, ProjectCard } from './Projects'
+export { Stack } from './Stack'
 export { Contact } from './Contact'
-export { Footer } from './Footer'
-export { SmoothScroll } from './SmoothScroll'
-export { ThemeToggle } from './ThemeToggle'
-

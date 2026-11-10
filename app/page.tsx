@@ -1,76 +1,17 @@
-'use client'
+import { Header, Hero, Work, About, Stack, Contact } from '@/components'
 
-// ============================================
-// Página Principal
-// Composição de todas as seções do portfólio
-// ============================================
-
-import { useEffect } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import {
-  Navigation,
-  Hero,
-  About,
-  Projects,
-  Contact,
-  Footer,
-  SmoothScroll,
-} from '@/components'
-
-// Registra plugins do GSAP
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger)
-}
-
+// Ordem narrativa: quem é → o que construiu → como pensa → com o que trabalha → como falar
 export default function HomePage() {
-  useEffect(() => {
-    // Refresh ScrollTrigger após o carregamento
-    const timer = setTimeout(() => {
-      ScrollTrigger.refresh()
-    }, 100)
-
-    return () => clearTimeout(timer)
-  }, [])
-
   return (
-    <SmoothScroll>
-      {/* Navegação fixa */}
-      <Navigation />
-
-      {/* Conteúdo principal */}
-      <main>
-        {/* Hero - Primeira impressão impactante */}
+    <>
+      <Header />
+      <main id="main">
         <Hero />
-
-        {/* Divisor decorativo */}
-        <div className="container-custom">
-          <div className="h-[1px] bg-gradient-to-r from-transparent via-border to-transparent" />
-        </div>
-
-        {/* Sobre mim */}
+        <Work />
         <About />
-
-        {/* Divisor decorativo */}
-        <div className="container-custom">
-          <div className="h-[1px] bg-gradient-to-r from-transparent via-border to-transparent" />
-        </div>
-
-        {/* Projetos */}
-        <Projects />
-
-        {/* Divisor decorativo */}
-        <div className="container-custom">
-          <div className="h-[1px] bg-gradient-to-r from-transparent via-border to-transparent" />
-        </div>
-
-        {/* Contato */}
+        <Stack />
         <Contact />
       </main>
-
-      {/* Footer */}
-      <Footer />
-    </SmoothScroll>
+    </>
   )
 }
-

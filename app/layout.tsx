@@ -1,132 +1,83 @@
 import type { Metadata, Viewport } from 'next'
-import { Space_Grotesk, Outfit } from 'next/font/google'
-import { I18nProvider } from '@/lib/i18n/context'
-import { ThemeProvider } from '@/lib/theme'
+import { Instrument_Serif, Inter_Tight, JetBrains_Mono } from 'next/font/google'
+import { Providers } from './providers'
 import './globals.css'
 
 // ============================================
-// Fontes - Usando Google Fonts como alternativa acessível
-// Space Grotesk: Display font moderna e geométrica
-// Outfit: Body font limpa e legível
+// Tipografia
+// Instrument Serif: títulos, com itálico para ênfase
+// Inter Tight: texto corrido e interface
+// JetBrains Mono: metadados, rótulos e índices
 // ============================================
 
-const spaceGrotesk = Space_Grotesk({
+const serif = Instrument_Serif({
   subsets: ['latin'],
-  variable: '--font-display',
+  weight: '400',
+  style: ['normal', 'italic'],
+  variable: '--font-serif',
   display: 'swap',
-  weight: ['400', '500', '600', '700'],
 })
 
-const outfit = Outfit({
+const sans = Inter_Tight({
   subsets: ['latin'],
-  variable: '--font-body',
+  weight: ['400', '500'],
+  variable: '--font-sans',
   display: 'swap',
-  weight: ['300', '400', '500', '600'],
 })
 
-// ============================================
-// Metadata SEO
-// ============================================
+const mono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-mono',
+  display: 'swap',
+})
+
+const description =
+  'Desenvolvedor Full Stack. Construo produtos web completos, da interface ao banco de dados — como o PsiMais, um SaaS para psicólogos em produção.'
 
 export const metadata: Metadata = {
-  title: 'Guilherme Calheira | Desenvolvedor Full Stack',
-  description: 'Desenvolvedor Full Stack especializado em criar experiências digitais elegantes e performáticas. React, Next.js, Vue.js, Node.js e mais.',
-  keywords: ['desenvolvedor', 'full stack', 'react', 'next.js', 'vue.js', 'portfolio', 'web developer', 'guilherme calheira'],
+  title: 'Guilherme Calheira — Desenvolvedor Full Stack',
+  description,
+  keywords: ['Guilherme Calheira', 'desenvolvedor full stack', 'React', 'Next.js', 'Vue.js', 'Node.js', 'PsiMais', 'portfólio'],
   authors: [{ name: 'Guilherme Calheira' }],
   creator: 'Guilherme Calheira',
-  icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
-  },
+  icons: { icon: '/favicon.svg' },
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
     alternateLocale: ['en_US', 'es_ES'],
-    title: 'Guilherme Calheira | Desenvolvedor Full Stack',
-    description: 'Desenvolvedor Full Stack especializado em criar experiências digitais elegantes e performáticas.',
-    siteName: 'Portfolio Guilherme Calheira',
+    title: 'Guilherme Calheira — Desenvolvedor Full Stack',
+    description,
+    siteName: 'Guilherme Calheira',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Guilherme Calheira | Desenvolvedor Full Stack',
-    description: 'Desenvolvedor Full Stack especializado em criar experiências digitais elegantes e performáticas.',
+    title: 'Guilherme Calheira — Desenvolvedor Full Stack',
+    description,
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 }
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#fafafa' },
-    { media: '(prefers-color-scheme: dark)', color: '#0a0a0b' },
+    { media: '(prefers-color-scheme: light)', color: '#F1EEE7' },
+    { media: '(prefers-color-scheme: dark)', color: '#131210' },
   ],
   width: 'device-width',
   initialScale: 1,
 }
 
-// Script para evitar flash de tema errado no carregamento
-const themeScript = `
-  (function() {
-    try {
-      var theme = localStorage.getItem('theme');
-      if (theme) {
-        document.documentElement.classList.add(theme);
-      } else {
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        document.documentElement.classList.add(prefersDark ? 'dark' : 'light');
-      }
-    } catch (e) {
-      document.documentElement.classList.add('dark');
-    }
-  })();
-`
+// Aplica o tema e o idioma salvos antes da primeira pintura (evita flash)
+const bootScript = `(function(){try{var d=document.documentElement;var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.classList.add(t);var l=localStorage.getItem('preferred-locale');if(l==='en')d.lang='en';else if(l==='es')d.lang='es'}catch(e){}})()`
 
-// ============================================
-// Root Layout
-// ============================================
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="pt-BR"
-      className={`scroll-smooth ${spaceGrotesk.variable} ${outfit.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="pt-BR" className={`${serif.variable} ${sans.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
-        {/* Script inline para aplicar tema antes do render */}
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script dangerouslySetInnerHTML={{ __html: bootScript }} />
       </head>
-      <body className="bg-background text-foreground font-body overflow-x-hidden antialiased">
-        <ThemeProvider>
-          <I18nProvider>
-            {/* Noise overlay global para textura sutil */}
-            <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.02]">
-              <svg className="w-full h-full">
-                <filter id="noise">
-                  <feTurbulence
-                    type="fractalNoise"
-                    baseFrequency="0.8"
-                    numOctaves="4"
-                    stitchTiles="stitch"
-                  />
-                </filter>
-                <rect width="100%" height="100%" filter="url(#noise)" />
-              </svg>
-            </div>
-            
-            {/* Conteúdo principal */}
-            <div className="relative z-10">
-              {children}
-            </div>
-          </I18nProvider>
-        </ThemeProvider>
+      <body>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

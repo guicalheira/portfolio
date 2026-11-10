@@ -1,24 +1,52 @@
 // ============================================
-// Dados dos Projetos
-// Baseado no GitHub: https://github.com/guicalheira
-// Fácil de customizar e adicionar novos projetos
+// Projetos
+// `featured` (PsiMais) ganha um estudo de caso em destaque;
+// os demais aparecem no índice de projetos.
 // ============================================
+
+import type { Locale } from '@/lib/i18n/locales'
+
+type Localized = Record<Locale, string>
 
 export interface Project {
   id: string
   title: string
-  description: {
-    pt: string
-    en: string
-    es: string
-  }
+  description: Localized
   image: string
   technologies: string[]
   liveUrl?: string
   repoUrl?: string
-  featured: boolean
   year: string
-  category: string
+  category: Localized
+}
+
+export interface FeaturedProject extends Project {
+  liveUrl: string
+  modules: Localized[]
+}
+
+// Estudo de caso em destaque — informações conforme o site oficial (psimais.com)
+export const featuredProject: FeaturedProject = {
+  id: 'psimais',
+  title: 'PsiMais',
+  description: {
+    pt: 'Plataforma SaaS para psicólogos organizarem a rotina clínica em um só lugar. Reúne cadastro de pacientes, agenda, prontuários e finanças, com assinatura mensal e período de teste — um produto real, em produção.',
+    en: 'A SaaS platform that lets psychologists run their clinical routine in one place. It brings together patient records, scheduling, clinical notes and finances, sold as a monthly subscription with a free trial — a real product, live in production.',
+    es: 'Plataforma SaaS para que psicólogos organicen su rutina clínica en un solo lugar. Reúne pacientes, agenda, historias clínicas y finanzas, con suscripción mensual y período de prueba — un producto real, en producción.',
+  },
+  image: '/img/projects/psimais.jpg',
+  technologies: ['React', 'Google Calendar API'],
+  liveUrl: 'https://www.psimais.com/',
+  year: '',
+  category: { pt: 'SaaS', en: 'SaaS', es: 'SaaS' },
+  modules: [
+    { pt: 'Gestão de pacientes', en: 'Patient management', es: 'Gestión de pacientes' },
+    { pt: 'Agendamento de consultas', en: 'Appointment scheduling', es: 'Agenda de consultas' },
+    { pt: 'Prontuários criptografados', en: 'Encrypted clinical records', es: 'Historias clínicas cifradas' },
+    { pt: 'Gestão financeira', en: 'Financial management', es: 'Gestión financiera' },
+    { pt: 'Sincronização com Google Agenda', en: 'Google Calendar sync', es: 'Sincronización con Google Calendar' },
+    { pt: 'Link público de agendamento', en: 'Public booking link', es: 'Enlace público de reservas' },
+  ],
 }
 
 export const projects: Project[] = [
@@ -26,99 +54,56 @@ export const projects: Project[] = [
     id: 'natucoop',
     title: 'Natucoop',
     description: {
-      pt: 'E-commerce de produtos naturais, com catálogo, vitrine de produtos e experiência de compra focada em simplicidade e confiança.',
-      en: 'Natural products e-commerce with a product catalog, storefront experience, and a checkout flow focused on simplicity and trust.',
-      es: 'E-commerce de productos naturales con catálogo, vitrina de productos y una experiencia de compra enfocada en simplicidad y confianza.',
+      pt: 'E-commerce de produtos naturais, com catálogo, vitrine e uma experiência de compra focada em simplicidade e confiança.',
+      en: 'Natural products e-commerce with a catalog, storefront and a buying experience focused on simplicity and trust.',
+      es: 'E-commerce de productos naturales con catálogo, vitrina y una experiencia de compra enfocada en simplicidad y confianza.',
     },
     image: '/img/projects/natucoop.jpg',
     technologies: ['React', 'Node.js', 'MongoDB'],
     liveUrl: 'https://www.natucoop.com.br',
-    repoUrl: 'https://github.com/guicalheira/natucoop',
-    featured: true,
     year: '2024',
-    category: 'Full Stack',
+    category: { pt: 'E-commerce', en: 'E-commerce', es: 'E-commerce' },
   },
   {
     id: 'musicante',
     title: 'Musicante',
     description: {
-      pt: 'Site de votação para um evento musical, com navegação por participantes, etapas do evento e uma experiência clara para o público votar.',
-      en: 'Voting website for a music event, with participant browsing, event stages, and a clear public voting experience.',
-      es: 'Sitio de votación para un evento musical, con navegación por participantes, etapas del evento y una experiencia clara para el público votar.',
+      pt: 'Site de votação para um festival de música, com navegação por participantes, etapas do evento e um fluxo claro para o público votar.',
+      en: 'Voting website for a music festival, with participant browsing, event stages and a clear flow for the public to vote.',
+      es: 'Sitio de votación para un festival de música, con navegación por participantes, etapas del evento y un flujo claro para que el público vote.',
     },
     image: '/img/projects/musicante.jpg',
     technologies: ['React Native', 'Redux', 'Firebase'],
     liveUrl: 'https://www.musicantesudoeste.com.br',
-    repoUrl: 'https://github.com/guicalheira/musical',
-    featured: true,
     year: '2024',
-    category: 'Mobile App',
-  },
-  {
-    id: 'lista-tarefas',
-    title: 'Lista de Tarefas',
-    description: {
-      pt: 'Gerenciador de tarefas completo para organização do dia a dia. Integração com MongoDB, gerenciamento de estado com Redux e interface moderna.',
-      en: 'Complete task manager for daily organization. MongoDB integration, Redux state management and modern interface.',
-      es: 'Gestor de tareas completo para organización diaria. Integración con MongoDB, gestión de estado con Redux e interfaz moderna.',
-    },
-    image: '/img/ToDo.png',
-    technologies: ['React', 'Redux', 'MongoDB', 'Node.js', 'CSS'],
-    liveUrl: undefined,
-    repoUrl: 'https://github.com/guicalheira/ListaDeFazeresApp',
-    featured: true,
-    year: '2024',
-    category: 'Web App',
-  },
-  {
-    id: 'projeto-cadastro',
-    title: 'Sistema de Cadastro',
-    description: {
-      pt: 'Sistema de cadastro de usuários com autenticação e persistência de dados no Firebase. Interface responsiva e validação em tempo real.',
-      en: 'User registration system with authentication and Firebase data persistence. Responsive interface and real-time validation.',
-      es: 'Sistema de registro de usuarios con autenticación y persistencia de datos en Firebase. Interfaz responsiva y validación en tiempo real.',
-    },
-    image: '/img/Cadastro.png',
-    technologies: ['React', 'TypeScript', 'Firebase', 'HTML', 'CSS'],
-    liveUrl: undefined,
-    repoUrl: 'https://github.com/guicalheira/Projeto-Cadastro',
-    featured: true,
-    year: '2024',
-    category: 'Full Stack',
-  },
-  {
-    id: 'calculadora-react',
-    title: 'Calculadora React',
-    description: {
-      pt: 'Calculadora funcional desenvolvida em React com interface clean e suporte a operações matemáticas básicas e avançadas.',
-      en: 'Functional calculator built with React featuring clean interface and support for basic and advanced math operations.',
-      es: 'Calculadora funcional desarrollada en React con interfaz limpia y soporte para operaciones matemáticas básicas y avanzadas.',
-    },
-    image: '/img/calculadora.png',
-    technologies: ['React', 'JavaScript', 'CSS', 'HTML'],
-    liveUrl: undefined,
-    repoUrl: 'https://github.com/guicalheira/CalculadoraReact',
-    featured: true,
-    year: '2023',
-    category: 'Utility',
+    category: { pt: 'Plataforma de votação', en: 'Voting platform', es: 'Plataforma de votación' },
   },
   {
     id: 'my-money',
     title: 'MyMoney',
     description: {
-      pt: 'Aplicação de controle financeiro pessoal com dashboard interativo, gráficos de gastos e categorização de transações.',
-      en: 'Personal finance control application with interactive dashboard, spending charts and transaction categorization.',
-      es: 'Aplicación de control financiero personal con panel interactivo, gráficos de gastos y categorización de transacciones.',
+      pt: 'Controle financeiro pessoal com dashboard, totais de créditos e débitos e ciclos de pagamento.',
+      en: 'Personal finance tracker with a dashboard, credit and debit totals, and payment cycles.',
+      es: 'Control financiero personal con panel, totales de créditos y débitos y ciclos de pago.',
     },
     image: '/img/MyMoney.png',
     technologies: ['React', 'Node.js', 'MongoDB', 'Chart.js'],
-    liveUrl: undefined,
     repoUrl: 'https://github.com/guicalheira',
-    featured: true,
     year: '2024',
-    category: 'Web App',
+    category: { pt: 'Aplicação web', en: 'Web app', es: 'Aplicación web' },
+  },
+  {
+    id: 'lista-tarefas',
+    title: 'Lista de Tarefas',
+    description: {
+      pt: 'Gerenciador de tarefas com cadastro, busca e conclusão de itens, estado gerenciado com Redux e persistência em MongoDB.',
+      en: 'Task manager with item creation, search and completion, Redux state management and MongoDB persistence.',
+      es: 'Gestor de tareas con alta, búsqueda y finalización de ítems, estado con Redux y persistencia en MongoDB.',
+    },
+    image: '/img/ToDo.png',
+    technologies: ['React', 'Redux', 'Node.js', 'MongoDB'],
+    repoUrl: 'https://github.com/guicalheira/ListaDeFazeresApp',
+    year: '2024',
+    category: { pt: 'Aplicação web', en: 'Web app', es: 'Aplicación web' },
   },
 ]
-
-// Projetos em destaque (para a home)
-export const featuredProjects = projects.filter(p => p.featured)

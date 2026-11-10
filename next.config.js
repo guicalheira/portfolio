@@ -6,7 +6,7 @@ const nextConfig = {
   },
   // Otimizações experimentais
   experimental: {
-    optimizePackageImports: ['framer-motion', 'gsap'],
+    optimizePackageImports: ['framer-motion'],
   },
 }
 

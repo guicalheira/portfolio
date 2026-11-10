@@ -1,109 +1,63 @@
-# Portfolio - Guilherme
+# Portfólio — Guilherme Calheira
 
-Portfolio pessoal moderno construído com **Next.js 14**, **Tailwind CSS**, **Framer Motion** e **GSAP**.
+Portfólio pessoal de desenvolvedor full stack, construído com **Next.js 14**, **TypeScript**, **Tailwind CSS** e **Framer Motion**.
 
-![Portfolio Preview](./public/img/perfil.png)
+![PsiMais](./public/img/projects/psimais.jpg)
 
-## ✨ Features
+## Direção de arte
 
-- **Dark Mode Elegante** - Paleta sofisticada com tons escuros e acentos dourados
-- **Multilíngue** - Suporte para Português, English e Español
-- **Animações Fluidas** - Framer Motion para microinterações + GSAP para scroll animations
-- **Totalmente Responsivo** - Design mobile-first
-- **Performance Otimizada** - Next.js App Router com otimizações automáticas
-- **SEO Ready** - Metadata otimizada para buscadores
+Linguagem editorial em vez de “landing page de template”:
 
-## 🚀 Tecnologias
+- **Papel e tinta** — fundo quente (`#F1EEE7`), texto quase preto e um único acento vermelhão, usado só em marcadores, estados e ênfases. Tema escuro com a mesma lógica.
+- **Tipografia** — *Instrument Serif* para títulos (itálico para ênfase), *Inter Tight* para texto e *JetBrains Mono* para metadados e índices.
+- **Grid de 12 colunas** com réguas finas e numeração (01–04) orientando a leitura; sem cards arredondados, sem gradientes, sem glassmorphism.
+- **Movimento discreto** — entrada do nome por máscara, revelações curtas ao rolar e prévia de projeto que segue o cursor. Tudo respeita “reduzir movimento” do sistema.
 
-- [Next.js 14](https://nextjs.org/) - Framework React com App Router
-- [React 18](https://react.dev/) - Biblioteca UI
-- [TypeScript](https://www.typescriptlang.org/) - Type safety
-- [Tailwind CSS](https://tailwindcss.com/) - Styling
-- [Framer Motion](https://www.framer.com/motion/) - Animações declarativas
-- [GSAP](https://greensock.com/gsap/) - Animações baseadas em scroll
+## Seções
 
-## 📁 Estrutura
+1. **Hero** — nome, atuação, hora local e chamadas para os trabalhos e o currículo.
+2. **Trabalhos** — estudo de caso do **PsiMais** (SaaS em produção) + índice dos demais projetos.
+3. **Sobre** — apresentação, retrato e fatos rápidos.
+4. **Stack** — tecnologias organizadas pelas camadas de um produto (front-end → back-end → dados), mais linguagens e fluxo de trabalho.
+5. **Contato** — e-mail com botão de copiar, GitHub, LinkedIn e currículo.
+
+Disponível em português, inglês e espanhol (a escolha fica salva no navegador).
+
+## Estrutura
 
 ```
-portfolio/
-├── app/                    # Next.js App Router
-│   ├── layout.tsx         # Layout raiz com providers
-│   ├── page.tsx           # Página principal
-│   └── globals.css        # Estilos globais
-├── components/            # Componentes React
-│   ├── Navigation/        # Header com menu
-│   ├── Hero/              # Seção inicial
-│   ├── About/             # Sobre + Skills
-│   ├── Projects/          # Grid de projetos
-│   ├── Contact/           # Formulário
-│   └── Footer/            # Rodapé
-├── lib/                   # Utilitários
-│   ├── i18n/              # Sistema de tradução
-│   ├── data/              # Dados (projetos, skills)
-│   └── utils.ts           # Helpers
-└── public/                # Assets estáticos
-    └── img/               # Imagens dos projetos
+app/
+  layout.tsx       # Fontes, metadados (SEO) e script de tema/idioma
+  providers.tsx    # Tema, i18n e configuração do Framer Motion
+  page.tsx         # Composição das seções
+  globals.css      # Tokens de cor e componentes base (botões, rótulos, links)
+components/        # Header, Hero, Work, About, Stack, Contact + Reveal/SectionHeading
+lib/
+  data/projects.ts # Projetos (PsiMais em destaque + índice)
+  data/skills.ts   # Camadas da stack
+  i18n/            # Traduções e contexto de idioma
+  theme/           # Contexto de tema claro/escuro
+  site.ts          # E-mail, redes e link do currículo
+public/img/        # Imagens dos projetos, retrato e currículo (PDF)
 ```
 
-## 🛠️ Desenvolvimento
+## Desenvolvimento
 
 ```bash
-# Instalar dependências
 npm install
-
-# Rodar em desenvolvimento
-npm run dev
-
-# Build para produção
+npm run dev     # http://localhost:3000
 npm run build
-
-# Iniciar produção
 npm start
 ```
 
-## 🎨 Customização
+## Como editar
 
-### Cores
+- **Projetos:** `lib/data/projects.ts` — `featuredProject` é o estudo de caso; `projects` alimenta o índice.
+- **Textos:** `lib/i18n/locales.ts` (pt, en, es).
+- **Contatos e currículo:** `lib/site.ts`.
+- **Cores:** variáveis em `app/globals.css` (`:root` e `.dark`).
+- **Escala tipográfica:** `tailwind.config.ts`.
 
-Edite `tailwind.config.ts` para alterar a paleta:
+## Licença
 
-```ts
-colors: {
-  background: { DEFAULT: '#0a0a0b', ... },
-  foreground: { DEFAULT: '#fafafa', ... },
-  accent: { DEFAULT: '#d4a853', ... },  // Cor principal
-}
-```
-
-### Projetos
-
-Adicione/edite projetos em `lib/data/projects.ts`:
-
-```ts
-{
-  id: 'meu-projeto',
-  title: 'Nome do Projeto',
-  description: { pt: '...', en: '...', es: '...' },
-  image: '/img/projeto.png',
-  technologies: ['React', 'Node.js'],
-  liveUrl: 'https://...',
-  repoUrl: 'https://github.com/...',
-}
-```
-
-### Traduções
-
-Edite `lib/i18n/locales.ts` para alterar textos em qualquer idioma.
-
-## 📱 Screenshots
-
-O site inclui:
-
-1. **Hero** - Animação de entrada com texto letra por letra
-2. **About** - Cards de skills com animações GSAP no scroll
-3. **Projects** - Grid com efeito 3D no hover
-4. **Contact** - Form com labels flutuantes animados
-
-## 📄 Licença
-
-MIT © Guilherme
+MIT © Guilherme Calheira
